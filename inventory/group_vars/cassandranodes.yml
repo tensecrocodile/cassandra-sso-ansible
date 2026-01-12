@@ -1,0 +1,35 @@
+---
+# Cassandra Cluster Configuration
+cassandra_cluster_name: "Production Cassandra Cluster"
+cassandra_version: "3.11.11"
+cassandra_user: cassandra
+cassandra_group: cassandra
+cassandra_home: /usr/local/cassandra
+cassandra_data_dirs:
+  - /var/lib/cassandra/data
+cassandra_commitlog_dir: /var/lib/cassandra/commitlog
+cassandra_saved_caches_dir: /var/lib/cassandra/saved_caches
+
+# Replication
+replication_factor: 3
+replication_strategy: "SimpleStrategy"
+
+# Performance Tuning
+cassandra_num_tokens: 8
+cassandra_max_heap_size: "4G"
+cassandra_heap_newsize: "800M"
+
+# Networking
+cassandra_listen_address: "{{ inventory_hostname }}"
+cassandra_rpc_address: "0.0.0.0"
+cassandra_broadcast_rpc_address: "{{ inventory_hostname }}"
+
+# Security
+enable_ssl: true
+enable_client_ssl: true
+enable_authentication: true
+enable_authorization: true
+
+# Backup
+enable_incremental_backups: true
+snapshot_before_compaction: false
